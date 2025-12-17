@@ -1,0 +1,63 @@
+{
+    "name": "govigilant/magento2-healthchecks",
+    "description": "A Magento 2 module that exposes application health information compatible with Vigilant.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "keywords": [
+        "vigilant",
+        "magento",
+        "healthchecks"
+    ],
+    "homepage": "https://govigilant.io",
+    "authors": [
+        {
+            "name": "Vincent Bean",
+            "email": "vincent@govigilant.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "magento/framework": "^103.0",
+        "govigilant/vigilant-healthchecks-base": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vigilant\\MagentoHealthchecks\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vigilant\\MagentoHealthchecks\\Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo-magento-mirror.fooman.co.nz/"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan",
+        "quality": [
+            "@test",
+            "@analyse"
+        ]
+    }
+}

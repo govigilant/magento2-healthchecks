@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="vigilant_cron_heartbeat" instance="Vigilant\MagentoHealthchecks\Cron\CronHeartbeat" method="execute">
+            <schedule>
+                <config_path>vigilant_healthchecks/cron/heartbeat_schedule</config_path>
+            </schedule>
+        </job>
+    </group>
+</config>

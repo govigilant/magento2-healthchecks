@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricInvalid" type="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetric">
+        <arguments>
+            <argument name="status" xsi:type="string">invalid</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricWorking" type="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetric">
+        <arguments>
+            <argument name="status" xsi:type="string">working</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricValid" type="Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetric">
+        <arguments>
+            <argument name="status" xsi:type="string">valid</argument>
+        </arguments>
+    </virtualType>
+    <type name="Vigilant\MagentoHealthchecks\HealthCheckRegistry">
+        <arguments>
+            <argument name="checks" xsi:type="array">
+                <item name="database" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\DatabaseCheck</item>
+                <item name="cache" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\CacheCheck</item>
+                <item name="debug_mode" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\DebugModeCheck</item>
+                <item name="disk_space" xsi:type="object">Vigilant\HealthChecksBase\Checks\DiskSpaceCheck</item>
+                <item name="redis" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\RedisCheck</item>
+                <item name="search_engine" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\SearchEngineCheck</item>
+                <item name="message_queue" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\MessageQueueCheck</item>
+                <item name="cron" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\CronCheck</item>
+            </argument>
+            <argument name="metrics" xsi:type="array">
+                <item name="memory_usage" xsi:type="object">Vigilant\HealthChecksBase\Checks\Metrics\MemoryUsageMetric</item>
+                <item name="cpu_load" xsi:type="object">Vigilant\HealthChecksBase\Checks\Metrics\CpuLoadMetric</item>
+                <item name="disk_usage" xsi:type="object">Vigilant\HealthChecksBase\Checks\Metrics\DiskUsageMetric</item>
+                <item name="indexers_invalid" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricInvalid</item>
+                <item name="indexers_working" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricWorking</item>
+                <item name="indexers_valid" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerMetricValid</item>
+                <item name="indexer_working_minutes" xsi:type="object">Vigilant\MagentoHealthchecks\Checks\Metrics\IndexerWorkingMinutesMetric</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Vigilant\MagentoHealthchecks\Api\HealthInterface" type="Vigilant\MagentoHealthchecks\Model\Health" />
+</config>

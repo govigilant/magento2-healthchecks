@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vigilant_MagentoHealthchecks::services_root"
+             title="Services"
+             module="Vigilant_MagentoHealthchecks"
+             sortOrder="200"
+             parent="Magento_Backend::system"
+             resource="Vigilant_MagentoHealthchecks::health" />
+        <add id="Vigilant_MagentoHealthchecks::menu"
+             title="Vigilant Healthchecks"
+             module="Vigilant_MagentoHealthchecks"
+             sortOrder="210"
+             parent="Vigilant_MagentoHealthchecks::services_root"
+             action="adminhtml/system_config/edit/section/vigilant_healthchecks"
+             resource="Vigilant_MagentoHealthchecks::health" />
+    </menu>
+</config>

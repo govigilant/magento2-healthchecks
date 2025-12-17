@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="vigilant_healthchecks" translate="label" sortOrder="900" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Vigilant Healthchecks</label>
+            <tab>general</tab>
+            <resource>Vigilant_MagentoHealthchecks::health</resource>
+            <group id="cron" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Cron</label>
+                <field id="heartbeat_schedule" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cron Heartbeat Schedule</label>
+                    <comment>CRON expression that determines how often the Vigilant heartbeat cron runs (e.g. */5 * * * *).</comment>
+                </field>
+                <field id="heartbeat_ttl" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Heartbeat Cache TTL (seconds)</label>
+                    <validate>validate-number</validate>
+                    <comment>Number of seconds the cron heartbeat timestamp remains valid in cache.</comment>
+                </field>
+                <field id="max_delay" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Maximum Allowed Cron Delay (seconds)</label>
+                    <validate>validate-number</validate>
+                    <comment>Checks fail when the heartbeat entry is older than this many seconds.</comment>
+                </field>
+            </group>
+            <group id="cache" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Cache</label>
+                <field id="probe_ttl" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cache Probe TTL (seconds)</label>
+                    <validate>validate-number</validate>
+                    <comment>Lifetime for the temporary cache record used to verify cache health.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

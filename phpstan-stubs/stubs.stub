@@ -1,0 +1,108 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Magento\Indexer\Model\Indexer {
+    if (!class_exists(CollectionFactory::class)) {
+        class CollectionFactory
+        {
+            public function create(): Collection
+            {
+                return new Collection();
+            }
+        }
+    }
+
+    if (!class_exists(Collection::class)) {
+        class Collection implements \IteratorAggregate
+        {
+            /**
+             * @return \Traversable<int, mixed>
+             */
+            public function getIterator(): \Traversable
+            {
+                return new \ArrayIterator([]);
+            }
+        }
+    }
+}
+
+namespace Magento\Framework\Indexer {
+    if (!interface_exists(StateInterface::class)) {
+        interface StateInterface
+        {
+            public const STATUS_INVALID = 'invalid';
+            public const STATUS_VALID = 'valid';
+            public const STATUS_WORKING = 'working';
+        }
+    }
+}
+
+namespace Magento\Framework\HTTP\Client {
+    if (!class_exists(CurlFactory::class)) {
+        class CurlFactory
+        {
+            public function create(): Curl
+            {
+                return new Curl();
+            }
+        }
+    }
+}
+
+namespace Magento\Store\Model {
+    if (!interface_exists(ScopeInterface::class)) {
+        interface ScopeInterface
+        {
+            public const SCOPE_STORE = 'stores';
+        }
+    }
+}
+
+namespace PhpAmqpLib\Connection {
+    if (!class_exists(AMQPStreamConnection::class)) {
+        class AMQPStreamConnection
+        {
+            public function __construct(mixed ...$args)
+            {
+            }
+
+            public function close(): void
+            {
+            }
+        }
+    }
+
+    if (!class_exists(AMQPSSLConnection::class)) {
+        class AMQPSSLConnection
+        {
+            public function __construct(mixed ...$args)
+            {
+            }
+
+            public function close(): void
+            {
+            }
+        }
+    }
+}
+
+namespace {
+    if (!class_exists(\AMQPConnection::class)) {
+        class AMQPConnection
+        {
+            public function __construct(array $credentials = [])
+            {
+            }
+
+            public function connect(): bool
+            {
+                return true;
+            }
+
+            public function disconnect(): void
+            {
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <vigilant_healthchecks>
+            <cron>
+                <heartbeat_schedule>* * * * *</heartbeat_schedule>
+                <heartbeat_ttl>300</heartbeat_ttl>
+                <max_delay>120</max_delay>
+            </cron>
+            <cache>
+                <probe_ttl>60</probe_ttl>
+            </cache>
+        </vigilant_healthchecks>
+    </default>
+</config>
