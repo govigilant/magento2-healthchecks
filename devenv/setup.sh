@@ -116,6 +116,15 @@ ensure_dependencies() {
     fi
 }
 
+ensure_module_autoload() {
+    if command -v git >/dev/null 2>&1; then
+        git config --global --add safe.directory "$HOST_MODULE_PATH" || true
+    fi
+
+    log "Refreshing Vigilant module Composer metadata..."
+    composer update --working-dir="$MAGENTO_ROOT" govigilant/magento2-healthchecks || true
+}
+
 configure_mirror_repositories() {
     local mirror="https://repo-magento-mirror.fooman.co.nz/"
     local base_path="$HOST_BASE_PATH"
@@ -249,6 +258,7 @@ main() {
 
     install_composer_dependencies
     ensure_dependencies
+    ensure_module_autoload
 
     if [[ ! -f "$MAGENTO_ROOT/app/etc/env.php" ]]; then
         install_magento

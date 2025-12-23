@@ -5,6 +5,19 @@
             <label>Vigilant Healthchecks</label>
             <tab>general</tab>
             <resource>Vigilant_MagentoHealthchecks::health</resource>
+            <group id="controls" translate="label" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Checks &amp; Metrics</label>
+                <field id="disabled_checks" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disabled Checks</label>
+                    <comment>Selected checks will be skipped entirely.</comment>
+                    <source_model>Vigilant\MagentoHealthchecks\Model\Config\Source\Checks</source_model>
+                </field>
+                <field id="disabled_metrics" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disabled Metrics</label>
+                    <comment>Selected metrics will not be collected.</comment>
+                    <source_model>Vigilant\MagentoHealthchecks\Model\Config\Source\Metrics</source_model>
+                </field>
+            </group>
             <group id="cron" translate="label" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Cron</label>
                 <field id="heartbeat_schedule" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">

@@ -13,6 +13,9 @@ class Config
 
     private const XML_PATH_CACHE_PROBE_TTL = 'vigilant_healthchecks/cache/probe_ttl';
 
+    private const XML_PATH_DISABLED_CHECKS = 'vigilant_healthchecks/controls/disabled_checks';
+    private const XML_PATH_DISABLED_METRICS = 'vigilant_healthchecks/controls/disabled_metrics';
+
 
     public function __construct(private readonly ScopeConfigInterface $scopeConfig) {}
 
@@ -36,6 +39,22 @@ class Config
         return max(1, (int) $this->getStringValue(self::XML_PATH_CACHE_PROBE_TTL, '60'));
     }
 
+    /**
+     * @return array<string>
+     */
+    public function getDisabledChecks(): array
+    {
+        return $this->getArrayValue(self::XML_PATH_DISABLED_CHECKS);
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getDisabledMetrics(): array
+    {
+        return $this->getArrayValue(self::XML_PATH_DISABLED_METRICS);
+    }
+
 
     private function getStringValue(string $path, string $default = ''): string
     {
@@ -46,5 +65,21 @@ class Config
         }
 
         return (string) $value;
+    }
+
+    /**
+     * @return array<string>
+     */
+    private function getArrayValue(string $path): array
+    {
+        $value = $this->getStringValue($path, '');
+
+        if ($value === '') {
+            return [];
+        }
+
+        $values = array_map('trim', explode(',', $value));
+
+        return array_values(array_filter($values, static fn (string $item): bool => $item !== ''));
     }
 }

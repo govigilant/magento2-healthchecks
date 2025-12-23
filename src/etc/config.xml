@@ -10,6 +10,10 @@
             <cache>
                 <probe_ttl>60</probe_ttl>
             </cache>
+            <controls>
+                <disabled_checks></disabled_checks>
+                <disabled_metrics></disabled_metrics>
+            </controls>
         </vigilant_healthchecks>
     </default>
 </config>

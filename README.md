@@ -35,6 +35,8 @@ bin/magento setup:upgrade
 
 Create an integration with access to the `Health Endpoint` resource in your Magento admin panel and use the access token as bearer token to access the health endpoint.
 
+You can also disable individual checks or metrics from **Stores → Configuration → General → Vigilant Healthchecks** by using the new multiselects under *Checks &amp; Metrics*. Disabled entries are skipped entirely when the health payload is generated.
+
 ## Usage
 
 ### Adding Custom Checks and Metrics

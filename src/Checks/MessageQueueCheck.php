@@ -118,7 +118,8 @@ class MessageQueueCheck extends Check
             $connection = $this->resourceConnection->getConnection();
             $tableName = $connection->getTableName('queue_message');
 
-            $connection->fetchOne(sprintf('SELECT 1 FROM %s LIMIT 1', $tableName));
+            $result = $connection->fetchOne(sprintf('SELECT COUNT(*) FROM %s', $tableName));
+            $messageCount = is_numeric($result) ? (int) $result : 0;
 
             $failedMessages = $this->getFailedMessagesCount($connection);
 
@@ -126,13 +127,14 @@ class MessageQueueCheck extends Check
                 'type' => $this->type(),
                 'key' => 'database',
                 'status' => Status::Healthy,
-                'message' => 'Database queue tables are reachable.',
+                'message' => sprintf('Database queue contains %d messages.', $messageCount),
+                'data' => [
+                    'message_count' => $messageCount,
+                ],
             ];
 
             if ($failedMessages !== null) {
-                $payload['data'] = [
-                    'failed_messages' => $failedMessages,
-                ];
+                $payload['data']['failed_messages'] = $failedMessages;
             }
 
             return ResultData::make($payload);
