@@ -5,8 +5,8 @@
 # Vigilant Magento Healthchecks
 
 <p>
-    <a href="https://github.com/govigilant/magento-healthchecks"><img src="https://img.shields.io/github/actions/workflow/status/govigilant/laravel-healthchecks/analyse.yml?label=analysis&style=flat-square" alt="Analysis"></a>
-    <a href="https://packagist.org/packages/govigilant/magento-healthchecks"><img src="https://img.shields.io/packagist/dt/govigilant/laravel-healthchecks?color=blue&style=flat-square" alt="Total downloads"></a>
+    <a href="https://github.com/govigilant/magento2-healthchecks"><img src="https://img.shields.io/github/actions/workflow/status/govigilant/magento2-healthchecks/analyse.yml?label=analysis&style=flat-square" alt="Analysis"></a>
+    <a href="https://packagist.org/packages/govigilant/magento2-healthchecks"><img src="https://img.shields.io/packagist/dt/govigilant/magento2-healthchecks?color=blue&style=flat-square" alt="Total downloads"></a>
 </p>
 
 A module that adds healthchecks to any Magento 2 application and integrates seamlessly with [Vigilant](https://github.com/govigilant/vigilant).
